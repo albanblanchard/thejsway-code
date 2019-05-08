@@ -8,8 +8,8 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome against localhost",
-      "url": "http://localhost/thejsway-code/",
-      "webRoot": "${workspaceFolder}/chapter10/html/examples.html"
+      "url": "http://localhost/thejsway/thejsway-code/",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }
