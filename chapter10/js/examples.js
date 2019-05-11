@@ -129,3 +129,63 @@ const recursiveReduce = array => {
 const arraysSum = recursiveReduce(arrays);
 
 console.log(arraysSum); // Should show 31
+
+//-4
+
+console.log('\nexo 4\n');
+
+const students = [
+  {
+    name: "Anna",
+    sex: "f",
+    grades: [4.5, 3.5, 4]
+  },
+  {
+    name: "Dennis",
+    sex: "m",
+    country: "Germany",
+    grades: [5, 1.5, 4]
+  },
+  {
+    name: "Martha",
+    sex: "f",
+    grades: [5, 4, 2.5, 3]
+  },
+  {
+    name: "Brock",
+    sex: "m",
+    grades: [4, 3, 2]
+  }
+];
+// Compute female student results
+// const femaleStudentsResults = [];
+// for (const student of students) {
+//   if (student.sex === "f") {
+//     let gradesSum = 0;
+//     for (const grade of student.grades) {
+//       gradesSum += grade;
+//     }
+//     const averageGrade = gradesSum / student.grades.length;
+//     femaleStudentsResults.push({
+//       name: student.name,
+//       avgGrade: averageGrade
+//     });
+//   }
+// }
+
+const filterStudents = (students, func) => students.filter(func);
+const byFemale = student => student.sex === "f";
+
+const averageGrade = grades => grades.reduce((sum, grade) => sum + grade,0) / grades.length;
+
+const studentsResultsOf = students => students.map(student => {
+  student = {
+    name: student.name,
+    avgGrade: averageGrade(student.grades),
+  }
+  return student;
+});
+
+const femaleStudentsResults = studentsResultsOf( filterStudents(students, byFemale) );
+
+console.log(femaleStudentsResults);
