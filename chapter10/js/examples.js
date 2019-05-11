@@ -1,3 +1,5 @@
+console.log('exo 1 \n');
+
 const movieList = [
   {
     title: "Batman",
@@ -64,3 +66,41 @@ console.log(`best ratings: ${titles(bestRating)}`);
 console.log(`nolan has directed ${nolanMovies.length} batman movies: ${titles(nolanMovies)}`);
 console.log(`batman movies average ratings: ${averageRate(ratings(movieList)).toFixed(1)}`);
 console.log(`batman movies before 2000: ${titles(moviesBefore2000)}`);
+
+
+
+console.log('\nexo 2 \n');
+
+const governmentForms = [
+  {
+    name: "Plutocracy",
+    definition: "Rule by the wealthy"
+  },
+  {
+    name: "Oligarchy",
+    definition: "Rule by a small number of people"
+  },
+  {
+    name: "Kleptocracy",
+    definition: "Rule by the thieves"
+  },
+  {
+    name: "Theocracy",
+    definition: "Rule by a religious elite"
+  },
+  {
+    name: "Democracy",
+    definition: "Rule by the people"
+  },
+  {
+    name: "Autocracy",
+    definition: "Rule by a single person"
+  }
+];
+
+const namesOf = governments => governments.map(government => government.name);
+const endingWithCy = name => name.endsWith('cy');
+const filterGovernments = (names, func) => names.filter(func);
+
+const formsEndingWithCy = filterGovernments(namesOf(governmentForms), endingWithCy);
+console.log(formsEndingWithCy);
