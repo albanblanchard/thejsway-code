@@ -104,3 +104,28 @@ const filterGovernments = (names, func) => names.filter(func);
 
 const formsEndingWithCy = filterGovernments(namesOf(governmentForms), endingWithCy);
 console.log(formsEndingWithCy);
+
+
+console.log('\nexo 3\n');
+
+const arrays = [[1, 4], [11], [3, 5, 7]];
+// TODO: compute the value of the arraysSum variable
+const arraySum = array => array.reduce((sum, value) => sum + value, 0);
+
+const recursiveReduce = array => {
+  let arraysSum = 0;
+  for (const elem of array) {
+    if (Array.isArray(elem)) {
+      arraysSum += recursiveReduce(elem);
+    }
+    else {
+      arraysSum += arraySum(array);
+      break;
+    }
+  }
+  return arraysSum;
+}
+
+const arraysSum = recursiveReduce(arrays);
+
+console.log(arraysSum); // Should show 31
