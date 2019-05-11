@@ -43,17 +43,19 @@ const movieList = [
   }
 ];
 
-// Get movie titles
-const titles = movies => movies.map(movie => movie.title);
-// Get movies by Christopher Nolan
-const nolanMovies = movies => movies.filter(movie => movie.director === 'Christopher Nolan');
-// Get titles of movies with an IMDB rating greater or equal to 7.5
-const bestTitles = movies => movies.filter(movie => movie.imdbRating >= 7.5).map(movie => movie.title);
-// Compute average rating of a movie list
-const averageRating = movies => movies.reduce((acc, movie) => acc + movie.imdbRating, 0) / movies.length;
 
-console.log(titles(movieList));
-const nolanMovieList = nolanMovies(movieList);
-console.log(nolanMovieList.length + ' ' + titles(nolanMovieList));
-console.log(bestTitles(movieList));
-console.log(averageRating(nolanMovieList));
+const titles = movies => movies.map(movie => movie.title);
+const ratings = movies => movies.map(movie => movie.imdbRating);
+const filterMovies = (movies, func) => movies.filter(func);
+
+const byNolan = movie => movie.director === "Christopher Nolan";
+const byBestRates = movie => movie.imdbRating >= 7.5;
+
+const averageRate = ratings => ratings.reduce((acc, rate) => acc + rate, 0) / ratings.length;
+
+const nolanMovies = filterMovies(movieList, byNolan);
+const bestRating = filterMovies(movieList, byBestRates);
+
+console.log(`best ratings: ${titles(bestRating)}`);
+console.log(`nolan has directed ${nolanMovies.length} batman movies: ${titles(nolanMovies)}`);
+console.log( Number(averageRate(ratings(movieList)).toFixed(1)) );
