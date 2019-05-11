@@ -46,16 +46,21 @@ const movieList = [
 
 const titles = movies => movies.map(movie => movie.title);
 const ratings = movies => movies.map(movie => movie.imdbRating);
+const years = movies => movies.map(movie => movie.year);
+
 const filterMovies = (movies, func) => movies.filter(func);
 
 const byNolan = movie => movie.director === "Christopher Nolan";
 const byBestRates = movie => movie.imdbRating >= 7.5;
+const before2000 = movie => movie.year < 2000;
 
 const averageRate = ratings => ratings.reduce((acc, rate) => acc + rate, 0) / ratings.length;
 
 const nolanMovies = filterMovies(movieList, byNolan);
 const bestRating = filterMovies(movieList, byBestRates);
+const moviesBefore2000 = filterMovies(movieList, before2000);
 
 console.log(`best ratings: ${titles(bestRating)}`);
 console.log(`nolan has directed ${nolanMovies.length} batman movies: ${titles(nolanMovies)}`);
-console.log( Number(averageRate(ratings(movieList)).toFixed(1)) );
+console.log(`batman movies average ratings: ${averageRate(ratings(movieList)).toFixed(1)}`);
+console.log(`batman movies before 2000: ${titles(moviesBefore2000)}`);
